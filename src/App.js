@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [status, setStatus] = useState("idle");
+  const [text, setText] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">
+          <h1>Będziesz moją walentynką Agatko ?</h1>
+          
+        
+      {status === "accepted" ? (
+        <div>
+          <h2>Super!<br/> Ty + ja 14 lutego w Gdańsku, wszystko przygotuje</h2>
+          <img width={"150px"} src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGhyaDJ2em9odnJjZ25ua2h1bDN0NWJ4cml2NmUyaWt5cTk4ZGh6YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c76IJLufpNwSULPk77/giphy.gif" />
+        </div>
+      ) : (
+        <div>
+          <div className="buttonContainer">
+        <button className="button" onClick={()=>{
+          setStatus("accepted")
+        }}>Tak</button>
+        <button className="button" onClick={()=>{
+          setText("zła odpowiedź")
+        }}>Nie</button>
+      </div>
+      <span className="span">
+      {text}
+      </span>
+        </div>
+
+      )}
+      </div>
     </div>
   );
 }
